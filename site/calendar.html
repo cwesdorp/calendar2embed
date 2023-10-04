@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>Calender2Embed</title>
+        <link href="css/calendar.css" rel="stylesheet"/>
+    </head>
+
+    <body>
+        <div id="calendar">
+        </div>
+
+        <div id="errors">
+        </div>
+
+        <script src="scripts/luxon-3.4.3.min.js"></script>
+        <script src="scripts/calendar.js"></script>
+        <script>
+            // var DateTime = luxon.DateTime;
+            try {
+                document.getElementById("calendar").innerHTML = calendar.render();
+            } catch (ex) {
+                document.getElementById("errors").innerHTML = `<pre>${ex}: <br/>${ex.stack}</pre>`
+            }
+        </script>
+    </body>
+</html>

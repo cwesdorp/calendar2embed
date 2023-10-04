@@ -1,0 +1,212 @@
+<html>
+    <head>
+        <title>Calendar2Embed</title>
+        <link href="css/home.css" rel="stylesheet"/>
+    </head>
+    <body>
+
+<h1 id="calendar2embed">Calendar2Embed</h1>
+
+<p>Calendar generator capable of adding recurring markers using the URL query
+string as input. This solution was created to add calendar view in
+an easy way to content systems as wikis that support iframe content.</p>
+
+<p>The solution is provided as is. It solves a problem for me and at this
+moment doesn’t need a lot more flexibility. If you like the solution
+you’re free to use it (or fork it) and please give it a star ;-).</p>
+
+<p>The code is straigh forward and not created for extensibility. Most magic
+happens around the handling or markers to highlight dates. It needs one
+external dependency Luxon that helps with date calculations.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>The calendar is available at <a href="calendar.html">calendar.html</a>.
+All configuration is passed via URLs query parameters which are
+described in this section.</p>
+
+<p>General parameters:</p>
+<table class="parameters">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>start</code></td>
+      <td>Sets the date of the month to start rendering calendars. Must be an ISO parsable date.</td>
+      <td><code>now()</code></td>
+      <td><code>2023-10</code>, <code>2023-10-02</code></td>
+    </tr>
+    <tr>
+      <td><code>width</code></td>
+      <td>Sets number of calendars rendered horizontally.</td>
+      <td><code>3</code></td>
+      <td><code>6</code></td>
+    </tr>
+    <tr>
+      <td><code>length</code></td>
+      <td>Sets the number of months that are renderd.</td>
+      <td><code>1</code></td>
+      <td><code>12</code></td>
+    </tr>
+    <tr>
+      <td><code>legend</code></td>
+      <td>Control the display of the legend.</td>
+      <td><code>true</code></td>
+      <td><code>false</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Marker describe which days to highlight. The parameters are:</p>
+
+<table class="parameters">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Default</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>marker</code></td>
+      <td>Marker expression defining which days are highlighted. See marker definition below for details. Mandatory parameter.</td>
+      <td> </td>
+      <td><code>5D</code>, <code>TUE</code>, <code>1M</code></td>
+    </tr>
+    <tr>
+      <td><code>first</code></td>
+      <td>Sets the starts of the schedule. Recuring occurences are calculated from this date. Must be ISO parsable.</td>
+      <td><code>start</code> from general parameters</td>
+      <td><code>2023-10-09</code></td>
+    </tr>
+    <tr>
+      <td><code>count</code></td>
+      <td>Sets the number of time the schedule repeats.</td>
+      <td><code>unlimited</code></td>
+      <td><code>3</code></td>
+    </tr>
+    <tr>
+      <td><code>name</code></td>
+      <td>Sets the name of the marker.</td>
+      <td><code>Serie N</code></td>
+      <td><code>Any string</code></td>
+    </tr>
+    <tr>
+      <td><code>color</code></td>
+      <td>Sets the color in HEX for the marker. The <code>#</code> is omitted.</td>
+      <td> </td>
+      <td><code>00FF00</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Marker parameters can be included multiple times and will be grouped based on
+order. It is advided to use the same set of parameters for every marker.</p>
+
+<h2 id="markers">Markers</h2>
+
+<p>Description of supported schedules for markers. <code>{N}</code> is used as variable.</p>
+
+<table class="parameters">
+  <thead>
+    <tr>
+      <th>Format</th>
+      <th>Description</th>
+      <th>Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>LAST</code></td>
+      <td>Shortcut for the last day of the month.</td>
+      <td><code>LAST</code></td>
+    </tr>
+    <tr>
+      <td><code>{N}</code></td>
+      <td><code>N</code> is number represting the day of the month.</td>
+      <td><code>2</code>, <code>28</code></td>
+    </tr>
+    <tr>
+      <td><code>{N}D</code></td>
+      <td>Repeat a mark every <code>N</code> days.</td>
+      <td><code>2D</code>, <code>33D</code></td>
+    </tr>
+    <tr>
+      <td><code>{N}W</code></td>
+      <td>Repeat a mark every <code>N</code> weeks.</td>
+      <td><code>1W</code>, <code>3W</code></td>
+    </tr>
+    <tr>
+      <td><code>{N}M</code></td>
+      <td>Repeat a mark every <code>N</code> months.</td>
+      <td><code>1M</code>, <code>3M</code></td>
+    </tr>
+    <tr>
+      <td><code>MON|TUE|WED|THU|FRI|SAT|SUN</code></td>
+      <td>Specify a week day on which the schedule repeats.</td>
+      <td><code>MON</code>, <code>THU</code></td>
+    </tr>
+    <tr>
+      <td><code>{N}MON|TUE|WED|THU|FRI|SAT|SUN</code></td>
+      <td>Specify the Nth occurence of a day in a month.</td>
+      <td><code>2TUE</code>, <code>3FRI</code></td>
+    </tr>
+    <tr>
+      <td><code>YYYY-MM-DD</code></td>
+      <td>Specify a date on which a marker should be placed. Must an ISO parsable date. Since dates don’t need configuration like <code>first</code> and <code>count</code> these are best places at the end of query string.</td>
+      <td><code>2023-10-02</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="examples">Examples</h2>
+
+<p>Render 6 months starting at October 2023, two per row:</p>
+
+<div class="example"><code>
+calendar.html?start=2023-10&amp;length=6&amp;width=2
+</code></div>
+
+<p>Render a recurring marker on every 5 days starting October 3th for 4 times.</p>
+
+<div class="example"><code>
+calendar.html?start=2023-10&amp;marker=3D&amp;first=2023-10-03&amp;count=4
+</code></div>
+
+<p>Render a recurring marker on Tuesday starting October 10th for 3 times.</p>
+
+<div class="example"><code>
+calendar.html?start=2023-10&amp;marker=TUE&amp;first=2023-10-10&amp;count=3
+calendar.html?start=2023-10&amp;marker=1W&amp;first=2023-10-10&amp;count=3
+</code></div>
+
+<p>Render a recurring marker every 3rd Thursday of the month</p>
+
+<div class="example"><code>
+calendar.html?start=2023-10&amp;length=6&amp;marker=3THU
+</code></div>
+
+<p>Render two series, every 3rd Monday and last day of the month:</p>
+
+<div class="example"><code>
+calendar.html?start=2023-10&amp;length=6&amp;marker=3TUE&amp;name=Prognosis report&amp;marker=LAST&amp;name=Monthly report
+</code></div>
+
+<p>Another mutiple series example:</p>
+
+<div class="example"><code>
+calendar.html?start=2023-10&amp;length=6&amp;marker=5D&amp;first=2023-09-01&amp;count=14&amp;name=starts before render&amp;marker=2W&amp;first=2023-11-03&amp;count=4&amp;name=Friday drinks&amp;marker=4WED&amp;first=2023-12-01&amp;count=999&amp;name=Every 4th Wednesday&amp;marker=2024-01-01&amp;name=New years day
+</code></div>
+
+<div class="footer"></div>
+
+</body>
+</html>

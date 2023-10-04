@@ -1,0 +1,22 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+
+    max-width: 900px;
+    margin: auto;
+}
+
+table.parameters thead tr {
+    background-color: silver;
+}
+
+table.parameters tbody tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+code {
+    overflow-x: auto;
+}
+
+div.footer {
+    margin-bottom: 32px;
+}
