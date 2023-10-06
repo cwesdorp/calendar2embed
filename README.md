@@ -7,11 +7,13 @@ an easy way to content systems as wikis that support iframe content.
 
 The solution is provided as is. It solves a problem for me and at this
 moment doesn't need a lot more flexibility. If you like the solution
-you're free to use it (or fork it) and give it a star ;-).
+you're free to use it (or fork it) and please give it a star ;-).
 
 The code is straigh forward and not created for extensibility. Most magic
 happens around the handling or markers to highlight dates. It needs one
 external dependency Luxon that helps with date calculations.
+
+![preview](docs/calendar.png)
 
 # Usage
 

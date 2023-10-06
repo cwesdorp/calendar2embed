@@ -19,6 +19,8 @@ you’re free to use it (or fork it) and please give it a star ;-).</p>
 happens around the handling or markers to highlight dates. It needs one
 external dependency Luxon that helps with date calculations.</p>
 
+<img src="calendar.png" alt="preview"/>
+
 <h2 id="usage">Usage</h2>
 
 <p>The calendar is available at <a href="calendar.html">calendar.html</a>.
@@ -171,40 +173,40 @@ order. It is advided to use the same set of parameters for every marker.</p>
 
 <p>Render 6 months starting at October 2023, two per row:</p>
 
-<div class="example"><code>
+<div class="example"><a href="calendar.html?start=2023-10&length=6&width=2"><code>
 calendar.html?start=2023-10&amp;length=6&amp;width=2
-</code></div>
+</code></a></div>
 
 <p>Render a recurring marker on every 5 days starting October 3th for 4 times.</p>
 
-<div class="example"><code>
+<div class="example"><a href="calendar.html?start=2023-10&marker=3D&first=2023-10-03&count=4"><code>
 calendar.html?start=2023-10&amp;marker=3D&amp;first=2023-10-03&amp;count=4
-</code></div>
+</code></a></div>
 
 <p>Render a recurring marker on Tuesday starting October 10th for 3 times.</p>
 
-<div class="example"><code>
-calendar.html?start=2023-10&amp;marker=TUE&amp;first=2023-10-10&amp;count=3
-calendar.html?start=2023-10&amp;marker=1W&amp;first=2023-10-10&amp;count=3
-</code></div>
+<div class="example">
+<a href="calendar.html?start=2023-10&marker=TUE&first=2023-10-10&count=3"><code>calendar.html?start=2023-10&amp;marker=TUE&amp;first=2023-10-10&amp;count=3</code></a><br/>
+<a href="calendar.html?start=2023-10&marker=1W&first=2023-10-10&count=3"><code>calendar.html?start=2023-10&amp;marker=1W&amp;first=2023-10-10&amp;count=3</code></a>
+</div>
 
 <p>Render a recurring marker every 3rd Thursday of the month</p>
 
-<div class="example"><code>
+<div class="example"><a href="calendar.html?start=2023-10&length=6&marker=3THU"><code>
 calendar.html?start=2023-10&amp;length=6&amp;marker=3THU
-</code></div>
+</code></a></div>
 
 <p>Render two series, every 3rd Monday and last day of the month:</p>
 
-<div class="example"><code>
+<div class="example"><a href="calendar.html?start=2023-10&length=6&marker=3TUE&name=Prognosis report&marker=LAST&name=Monthly report"><code>
 calendar.html?start=2023-10&amp;length=6&amp;marker=3TUE&amp;name=Prognosis report&amp;marker=LAST&amp;name=Monthly report
-</code></div>
+</code></a></div>
 
 <p>Another mutiple series example:</p>
 
-<div class="example"><code>
+<div class="example"><a href="calendar.html?start=2023-10&length=6&marker=5D&first=2023-09-01&count=14&name=starts before render&marker=2W&first=2023-11-03&count=4&name=Friday drinks&marker=4WED&first=2023-12-01&count=999&name=Every 4th Wednesday&marker=2024-01-01&name=New years day"><code>
 calendar.html?start=2023-10&amp;length=6&amp;marker=5D&amp;first=2023-09-01&amp;count=14&amp;name=starts before render&amp;marker=2W&amp;first=2023-11-03&amp;count=4&amp;name=Friday drinks&amp;marker=4WED&amp;first=2023-12-01&amp;count=999&amp;name=Every 4th Wednesday&amp;marker=2024-01-01&amp;name=New years day
-</code></div>
+</code></a></div>
 
 <div class="footer"></div>
 
