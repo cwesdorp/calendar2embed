@@ -23,7 +23,7 @@ table.calendar, table.calendar tr, table.calendar td {
 
 .calendar tr td {
     border: 1px solid;
-    width: 32px;
+    width: 30px;
     padding-top: 4px;
     padding-bottom: 4px;
 }
