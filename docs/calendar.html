@@ -5,7 +5,7 @@
     </head>
 
     <body>
-        <div id="calendar">
+        <div id="calendars">
         </div>
 
         <div id="errors">
@@ -16,7 +16,7 @@
         <script>
             // var DateTime = luxon.DateTime;
             try {
-                document.getElementById("calendar").innerHTML = calendar.render();
+                document.getElementById("calendars").innerHTML = calendar.render();
             } catch (ex) {
                 document.getElementById("errors").innerHTML = `<pre>${ex}: <br/>${ex.stack}</pre>`
             }

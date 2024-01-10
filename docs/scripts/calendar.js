@@ -14,14 +14,12 @@ var calendar = (function(lxn) {
     }
 
     const renderMonths = (opts) => {
-        let result = "";
+        let result = `<div class="calendars_pane" style="max-width: ${opts.width * 250}px">`;
 
         // calendars
         for (let m = 0; m < opts.length; m++) {
-            let clear = (m % opts.width) === 0 ? `style="clear: left" ` : "";
-
             let month = opts.start.plus({month: m});
-            result += `<div class="calendar_block" ${clear} >${renderMonth(month, opts)}</div>`;
+            result += `<div class="calendar_block">${renderMonth(month, opts)}</div>`;
         }
 
         // break
@@ -29,6 +27,7 @@ var calendar = (function(lxn) {
 
         //legend
         result += _renderLegend(opts);
+        result += "</div>";
 
         return result;
     }
